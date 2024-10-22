@@ -12,12 +12,33 @@ data Point v = Point v
 type Point2D = Point Vector2D
 type Point3D = Point Vector3D
 
+makePoint2D :: Float -> Float -> Point2D
+makePoint2D x y = Point (Vector2D x y)
 
 chooseMin :: Ord a => (a, b) -> (a, b) -> (a, b)
 chooseMin (est, val) (est', val') = if est < est' then (est, val) else (est', val')
 
 findMinFoldable :: (Foldable t, Ord a) => t (a, b) -> b
-findMinFoldable = snd . foldr1 chooseMin 
+findMinFoldable = snd . foldr1 chooseMin
+
+chunksOf :: Int -> [a] -> [[a]]
+chunksOf _ [] = []
+chunksOf n xs = (take n xs) : (chunksOf n (drop n xs))
+
+merge :: Ord a => [a] -> [a] -> [a]
+merge [] [] = []
+merge [] ys = ys
+merge xs [] = xs
+merge (x:xs) (y:ys) = if x < y then x : (merge xs (y:ys)) else y : (merge (x:xs) ys)
+
+sort :: Ord a => [a] -> [a]
+sort [] = []
+sort [x] = [x]
+sort xs = let n = length xs in
+          let half = div n 2 in
+          let left = sort (take half xs) in
+          let right = sort (drop half xs) in
+          merge left right
 
 
 class LinearSpace vector where

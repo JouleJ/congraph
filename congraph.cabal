@@ -59,7 +59,15 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules:  Core.Color Core.Space Core.Algebra Core.Image Core.Metric
+    exposed-modules:
+        Core.Algebra
+        Core.Color
+        Core.Image
+        Core.Metric
+        Core.Space
+        Graphics.Primitives
+        Terminal.Buffer
+        Terminal.Render
 
     -- Modules included in this library but not exported.
     -- other-modules:

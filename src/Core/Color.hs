@@ -17,3 +17,15 @@ green = Color 0.0 1.0 0.0
 
 blue :: Color
 blue = Color 0.0 0.0 1.0
+
+yellow :: Color
+yellow = Color (2.0 / 3.0) (1.0 / 3.0) 0.0
+
+brightYellow :: Color
+brightYellow = Color 1.0 1.0 0.0
+
+magenta :: Color
+magenta = Color (2.0 / 3.0) 0.0 (2.0 / 3.0)
+
+cyan :: Color
+cyan = Color 0.0 (2.0 / 3.0) (2.0 / 3.0)
